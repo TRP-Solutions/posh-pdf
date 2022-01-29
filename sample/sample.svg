@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="280px" height="290px" viewBox="0 0 280 290" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group" stroke="#979797" stroke-width="20">
+            <rect id="Rectangle" x="10" y="10" width="180" height="180" rx="8"></rect>
+            <circle id="Oval" cx="100" cy="190" r="90"></circle>
+            <path d="M230,107.147528 L342.886085,185 L117.113915,185 L230,107.147528 Z" id="Triangle" transform="translate(230.000000, 145.000000) rotate(90.000000) translate(-230.000000, -145.000000) "></path>
+        </g>
+    </g>
+</svg>

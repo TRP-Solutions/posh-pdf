@@ -20,9 +20,6 @@ class PoshPDF extends TCPDF {
 	private $footerheight = 0;
 
 	public function __construct(...$args){
-		if(!defined('K_PATH_IMAGES')){
-			define('K_PATH_IMAGES',__DIR__.'/../../');
-		}
 		parent::__construct(...$args);
 		$this->SetLeftMargin(PDF_MARGIN_LEFT);
 		$this->SetRightMargin(PDF_MARGIN_RIGHT);
