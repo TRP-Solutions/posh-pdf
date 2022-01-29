@@ -104,6 +104,10 @@ class PoshPDFTable {
 
 		for($i = 0; $i < $cell_count; $i++){
 			$w = $this->table_cellwidth[$i];
+			if($cells[$i]===null) {
+				$this->pdf->setX($this->pdf->getX() + $w);
+				continue;
+			}
 			$s = $this->pdf->SetStyle($style_id[$i]);
 
 			$this->pdf->MultiCell($w,$cell_height,$cells[$i],$this->table_border,$s['align'],(bool) $s['fill'],0,
