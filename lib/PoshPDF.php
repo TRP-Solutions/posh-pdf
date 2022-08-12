@@ -46,7 +46,7 @@ class PoshPDF extends TCPDF {
 			'font_size' => $font_size,
 			'font_style' => isset($input['font_style']) ? $input['font_style'] : $this->style[$source]['font_style'],
 			'margin' => isset($input['margin']) ? $input['margin'] : $this->style[$source]['margin'],
-			'line_height' => isset($input['line_height']) ? $input['line_height'] : $font_size/2,
+			'line_height' => isset($input['line_height']) ? $input['line_height'] : $this->style[$source]['line_height'],
 			'align' => isset($input['align']) ? $input['align'] : $this->style[$source]['align'],
 			'vertical_align' => isset($input['vertical_align']) ? $input['vertical_align'] : $this->style[$source]['vertical_align'],
 			'fill' => isset($input['fill']) ? $this->ParseColor($input['fill']) : $this->style[$source]['fill'],
@@ -55,7 +55,7 @@ class PoshPDF extends TCPDF {
 	}
 
 	public function SetStyle($style_id){
-		$s = isset($this->style[$style_id]) ? $this->style[$style_id] : $this->style['default'];
+		$s = $this->GetStyle($style_id);
 
 		if($this->current_style !== $style_id){
 			$this->SetTextColorArray($s['color'] ? $s['color'] : [0,0,0]);
@@ -64,15 +64,16 @@ class PoshPDF extends TCPDF {
 			$this->current_style = $style_id;
 		}
 
-		if(!isset($s['line_height'])){
-			$s['line_height'] = $s['font_size'] / 2;
-		}
-
 		return $s;
 	}
 
 	public function GetStyle($style_id){
 		$s = isset($this->style[$style_id]) ? $this->style[$style_id] : $this->style['default'];
+
+		if(!isset($s['line_height'])){
+			$s['line_height'] = $s['font_size'] / 2;
+		}
+
 		return $s;
 	}
 
