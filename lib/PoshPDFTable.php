@@ -114,7 +114,7 @@ class PoshPDFTable {
 				// default values to get to late parameter
 				'', '', true, 0, false, true,
 				// maxh: $cell_height, vertical align: Middle
-				$cell_height,'M');
+				$cell_height,$s['vertical_align']);
 		}
 		$this->pdf->Ln($cell_height);
 	}
