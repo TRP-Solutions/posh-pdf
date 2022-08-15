@@ -101,6 +101,9 @@ class PoshPDF extends TCPDF {
 	}
 
 	private function ParseColor($input){
+		if(is_array($input) && count($input) == 3 && is_int($input[0]) && is_int($input[1]) && is_int($input[2])){
+			return $input;
+		}
 		if(strpos($input,'#')===0 && strlen($input)===7){
 			return [
 				hexdec(substr($input,1,2)),
