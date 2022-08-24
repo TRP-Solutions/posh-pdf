@@ -91,8 +91,12 @@ class PoshPDFTable {
 			else {
 				$style_id[$i] = 'default';
 			}
-			$line_height = $this->pdf->GetStyle($style_id[$i])['line_height'];
-			$cell_height = max($cell_height, $line_height*count(explode("\n",$cells[$i])));
+			$style = $this->pdf->GetStyle($style_id[$i]);
+			$font_size = $style['font_size']/2;
+			$padding = $style['line_height'] - $font_size;
+			$this->pdf->SetStyle($style_id[$i]);
+			$lines = $this->pdf->getNumLines($cells[$i], $this->table_cellwidth[$i], true, true, null, $this->table_border);
+			$cell_height = max($cell_height, $lines*$font_size+$padding);
 		}
 
 		if($this->pdf->getAutoPageBreak() && $this->pdf->getY() + $cell_height + $this->pdf->getBreakMargin() >= $this->pdf->getPageHeight()){
